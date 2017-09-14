@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+ <head>
+<meta charset="UTF-8" />
+<title>Login Form</title>
+	<link th:href="@{login/css/base.css}" rel="stylesheet"/> 
+	<link th:href="@{login/css/skeleton.css}" rel="stylesheet"/> 
+	<link th:href="@{login/css/layout.css}" rel="stylesheet"/>  
+<script th:src="@{login/js/app.js}"></script>
+<script th:src="@{jquery-3.1.1.min.js}"></script>
+
+<style type="text/css">
+<!--黑块 -->
+	.form-bg {
+		height: 255px;
+	}
+	
+	.form-bg form {
+		height: 265px;	
+	}
+</style>
+</head>
+
+
+
+<body>
+
+
+
+
+<div class="container">
+		<div class="form-bg">
+			<form th:action="@{/login}" method="post">
+				<h2>Login</h2>
+				<p><input type="text" name="username" placeholder="Username" /></p>
+				<p><input type="password" name="password" placeholder="Password" /></p>
+				<p th:if="${param.error}" style="padding-left: 25px;color: red;">
+    				无效的账号和密码
+				</p>
+				<label for="remember">
+				  <input type="checkbox" id="remember" value="remember" />
+				  <span>Remember me on this computer</span>
+				</label>
+				<button type="submit">Sign in</button>
+			</form>
+		</div>
+	
+		<p class="forgot">Forgot your password? <a href="">Click here to reset it.</a></p>
+		
+	</div><!-- container -->
+
+</body>
+</html>

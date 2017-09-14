@@ -1,0 +1,65 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:fragment="headfragment">
+	<title>Gary Blog</title>
+  	<meta charset="UTF-8" /><!-- 只能是这样 -->
+  	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link th:href="@{bootstrap/css/bootstrap.min.css}" rel="stylesheet"/> 
+    <link th:href="@{bootstrap/css/bootstrap-theme.min.css}" rel="stylesheet"/>
+    <script th:src="@{jquery-3.1.1.min.js}"></script>
+    <script th:src="@{bootstrap/js/bootstrap.min.js}"></script>
+    <style th:inline="text">
+	.navbar-nav>li>a {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	}
+	.navbar-brand {
+	height: 40px;
+	padding-top: 10px;
+	}
+	.navbar {
+	min-height: 40px;
+	}
+	
+	.navbar-toggle {
+	margin-top: 4px;
+	margin-bottom: 4px;
+	}
+	
+	#edit{
+	position: fixed;
+	top: 35%;
+	left:90%;
+	}
+	#remove{
+	position: fixed;
+	top: 45%;
+	left:90%;
+	}
+	#download{
+	position:fixed;
+	top:55%;
+	left:90%; 
+	}
+	#up{ 
+	position:fixed;
+	top:65%;
+	left:90%;
+	}
+	
+	#cke_editor1{
+	margin-left: 5%;
+	
+	}
+	
+	.panel{
+	border-width: 2px;
+	}
+	</style>
+</head>
+
+<body>
+
+</body>
+</html>

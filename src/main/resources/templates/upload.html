@@ -1,0 +1,81 @@
+<html xmlns:th="http://www.thymeleaf.org">
+  <head th:include="headtest :: headfragment">
+  </head>
+  <script type="text/javascript" th:src="@{/ckeditor/ckeditor.js}"></script>
+  
+ 
+      
+<body>
+  
+	<div th:include="header :: nav"  style="margin-bottom:0px;"></div>
+ 
+	<form class="form-inline" role="form" th:action="@{/processUpload}" th:object="${note}" method="post">
+  		<div class="input-group" style="margin-left: 180px;">
+			<div class="input-group-btn">
+				<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+					Select Category<span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu">
+					<li><a href="#">Program</a></li>
+					<li><a href="#">Operation</a></li>
+					<li><a href="#">Network</a></li>
+					<li><a href="#">Database</a></li>
+					<li><a href="#">Miscellaneous</a></li>	
+				</ul>
+			</div><!-- /btn-group -->
+			<input type="text" class="form-control" th:field="*{category}" id="cate" required="required"/>
+		</div><!-- /input-group -->
+  
+  		<div class="form-group">
+    	<label for="notename" class="control-label">Name：</label>
+        <input type="text"  style="width:300px;" class="form-control" th:field="*{name}" placeholder="Please input note name" id="notename" required="required" onchange="checkname()"/>
+ 	    </div>
+  
+  		<!-- 真正的id是cke_editor1 -->
+   		<textarea name="editor1" style="margin-left:100px;" id="editor1"  th:field="*{content}">
+   		</textarea>
+   		<script>
+       		CKEDITOR.replace( 'editor1');
+	    </script>
+ 
+  		<input type="submit" class="form-control" value="Submit Note" style="margin-left: 45%;"/>
+   
+	</form>
+ 
+    <script type="text/javascript" th:inline="javascript">
+	   $("document").ready(function(){
+		    $(".dropdown-menu li").click(function(){
+		        var atext = $(this).text();
+		        document.getElementById("cate").value=atext;
+		    })
+		})
+    </script>
+      
+    <script type="text/javascript">
+     //<![CDATA[  
+   	  function checkname(){
+  			var xmlhttp;
+  			xmlhttp=new XMLHttpRequest();
+  			xmlhttp.onreadystatechange=function()
+  			{
+  				if (xmlhttp.readyState==4 && xmlhttp.status==200)
+  				{
+  					if(xmlhttp.responseText=="false"){
+  						 //document.getElementById("nameerror").value="name has been used";
+  						 alert("This name has been used");
+  						document.getElementById("notename").value="";
+  					}
+  				}
+  			}
+  			var notename=document.getElementById("notename").value;
+  			var address="/checkname?name="+notename;
+  			xmlhttp.open("GET",address,true);
+  			xmlhttp.send();
+     //]]>
+		}
+     </script>
+      
+    <div th:include="footer :: copy"></div>
+    
+</body>
+</html>

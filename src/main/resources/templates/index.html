@@ -1,0 +1,70 @@
+<html xmlns:th="http://www.thymeleaf.org" >
+   <head th:include="headtest :: headfragment">
+   </head>
+
+<body>
+   
+	<div th:include="header :: nav" id="nav"></div>
+
+	<div class="panel panel-default" align="center">
+	    <div class="panel-body">
+	        注意事项：
+	        <br></br> <br></br>
+	        若是upload或remove了某个note，需要等待浏览器或手动刷新页面才能在导航栏实时显示
+	          <br></br> <br></br>
+	       本blog暂不支持图片混合文字功能
+	       <br></br> <br></br>
+	       由于本blog私人性质比较强，所以采用了亲友激活注册机制
+	        <br></br> <br></br>
+	       非登录用户仅能浏览note，再无任何其他权限
+	        <br></br> <br></br>
+	       由于所有的登录用户权限以及得到的服务相同，所以不提供logout功能
+	    </div>
+	</div>
+
+	<div th:include="footer :: copy"></div>
+
+	<div class="modal fade" id="removeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+						&times;
+					</button>
+				</div>
+				<div class="modal-body" align="center">
+					<b>remove or edit done</b>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">OK
+					</button>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal -->
+	</div>
+
+ 
+	<script type="text/javascript" th:inline="javascript">
+	 window.onload=function(){
+			var para=window.location.search;
+			 var nav=document.getElementById("nav");
+			if(para=="?refresh=1"){
+			   if(location.href.indexOf('#reloaded')==-1){
+				    location.href=location.href+"#reloaded";
+				    nav.style.display="none";
+				    setTimeout(function(){
+				    	location.reload();
+				    },2800);
+			
+				}
+			   else{  
+				   //alert("remove done");
+				   $('#removeModal').modal();
+				   nav.style.display="block";
+			   }
+			}
+	 };
+	</script>
+
+</body>
+</html>

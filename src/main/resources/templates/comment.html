@@ -1,0 +1,50 @@
+<html xmlns:th="http://www.thymeleaf.org">
+   <head th:include="headtest :: headfragment">
+		<meta http-equiv="Pragma" content="no-cache"/>
+		<meta http-equiv="Cache-Control" content="no-cache"/>
+		<meta http-equiv="Expires" content="0"/>
+  </head>
+  
+  
+<body>
+ 
+ 	<div th:include="header :: nav" id="nav"></div>
+
+    <div class="panel panel-default" align="center" >
+    <div class="panel-body">
+  		<b>Comment Area</b>
+    </div>
+   	</div>
+   
+    <form  role="form" th:action="@{/processComment}" th:object="${singlecomment}" method="post">
+		<div style="width:80%;margin-left: auto;margin-right: auto;" class="form-group">
+  			<label for="name">评论：</label>
+			<textarea class="form-control" rows="3" th:field="*{content}"></textarea>
+   			<input type="submit" id="sub" class="form-control" value="Submit Comment" style="margin-left: 81%;margin-top: 5px;width: 150px;"/>
+		</div>
+	</form>
+
+	 <div class="panel panel-default"  style="width:80%;margin-left: auto;margin-right: auto;padding-top: 10px;border-bottom: 0px;">
+	    <div th:each="comment : ${comments}">
+	    	<span>&emsp;</span>
+	    	<span th:text="${comment.username}"></span>
+	    	<span>:&emsp;</span>
+	    	<span th:text="${comment.content}"></span>
+			<hr style="margin-bottom: 10px;margin-top: 10px;"></hr>
+	    </div>
+	   </div>
+
+	<div th:include="footer :: copy"></div>
+
+
+	<script type="text/javascript" th:inline="javascript">
+	 //防止表单刷新重交，绝了
+	 window.onload=function(){
+			   if(location.href.indexOf('#reloaded')==-1){
+				    location.href="http://localhost/comment#reloaded";
+				}
+	 };
+	</script> 
+
+</body>
+ </html>

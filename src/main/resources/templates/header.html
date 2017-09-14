@@ -1,0 +1,96 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+  <head th:include="headtest :: headfragment">
+  </head>
+  
+<body>
+  
+	<div th:fragment="nav">
+	  	<nav class="navbar navbar-inverse" role="navigation" style="margin-bottom: 5px;">
+		<div class="container-fluid" >
+			<div class="navbar-header">
+				<a class="navbar-brand" href="/">首页</a>
+			</div>
+			
+			<div>
+			<ul class="nav navbar-nav">
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+						Program
+						<b class="caret"></b>
+					</a>
+					<ul class="dropdown-menu">
+						<li><a href="/note?name=html/css">html/css</a></li>
+						<li><a href="/note?name=JSP">JSP</a></li>
+						<li><a href="/note?name=Python">Python</a></li>
+						<li><a href="/note?name=编程珠玑">编程珠玑</a></li>
+						<li><a href="/note?name=C">C</a></li>
+						<li><a href="/note?name=Spring">Spring</a></li>
+					</ul>
+				</li>
+				
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+						Operation
+						<b class="caret"></b>
+					</a>
+					<ul class="dropdown-menu">
+						<li><a href="/note?name=Linux指令">Linux指令</a></li>
+						<li><a href="/note?name=操作系统">操作系统</a></li>
+					</ul>
+				</li>
+				
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+						Network
+						<b class="caret"></b>
+					</a>
+					<ul class="dropdown-menu">
+						<li><a href="/note?name=信息工程">信息工程</a></li>
+						<li><a href="/note?name=网管">网管</a></li>
+						<li><a href="/note?name=linux网络基础">linux网络基础</a></li>
+					</ul>
+				</li>
+				
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+						Database
+						<b class="caret"></b>
+					</a>
+					<ul class="dropdown-menu">
+						<li><a href="/note?name=MySQL">MySQL</a></li>
+					</ul>
+				</li>
+				
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+						Miscellaneous
+						<b class="caret"></b>
+					</a>
+					<ul class="dropdown-menu" id="misul">
+						<li><a href="/note?name=Office">Office</a></li>
+						<li><a href="/note?name=PS基础">PS基础</a></li>
+						<li><a href="/note?name=Audition">Audition</a></li>
+						<li><a href="/note?name=PR">PR</a></li>
+						<li><a href="/note?name=Protel">Protel</a></li>
+					</ul>
+				</li>
+				
+			</ul>
+		</div>
+		
+		 <ul class="nav navbar-nav navbar-right">
+		 	<li><a href="/upload"><span class="glyphicon glyphicon-upload"></span> 上传</a></li>
+	     	<li><a href="/register"><span class="glyphicon glyphicon-user"></span> 注册</a></li>
+	     	<li>
+	     		<a sec:authorize="isAnonymous()" href="/login"><span class="glyphicon glyphicon-user"></span> 登陆</a>
+	     		<a sec:authorize="isAuthenticated()" href="#"><span class="glyphicon glyphicon-user" sec:authentication="name"></span></a>
+	      	</li>
+	      	<li><a href="/comment"><span class="glyphicon glyphicon-comment"></span> 评论</a></li>
+	     </ul>
+	     
+		</div>
+		</nav>
+	</div>
+
+</body>
+</html>

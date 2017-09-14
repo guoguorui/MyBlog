@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+	<meta charset="UTF-8" />
+	<title>Login Form</title>
+	<link th:href="@{login/css/base.css}" rel="stylesheet"/> 
+	<link th:href="@{login/css/skeleton.css}" rel="stylesheet"/> 
+	<link th:href="@{login/css/layout.css}" rel="stylesheet"/>  
+	<script th:src="@{login/js/app.js}"></script>
+	<script th:src="@{jquery-3.1.1.min.js}"></script>
+</head>
+
+<body>
+
+
+	<div class="container">
+		<div class="form-bg">
+			<p><input type="text" id="activication" onchange="checkac()" placeholder="Activication Code" /></p>
+			<form th:action="@{/registerUser}" th:object="${user}" method="post">
+				<h2>Register</h2>	
+				<p><input type="text"  th:field="*{username}" placeholder="Username" required="required"/></p>
+				<p><input type="password"  th:field="*{password}" id="ps" disabled="disabled" placeholder="Password" required="required" /></p>
+				<button type="submit">Sign up</button>
+			</form>
+		</div>
+	</div>
+	
+	 <script type="text/javascript">
+      //<![CDATA[  
+    	  function checkac(){
+   			var xmlhttp;
+   			xmlhttp=new XMLHttpRequest();
+   			xmlhttp.onreadystatechange=function()
+   			{
+   				if (xmlhttp.readyState==4 && xmlhttp.status==200)
+   				{
+   					if(xmlhttp.responseText=="false"){
+   						 //document.getElementById("nameerror").value="name has been used";
+   						 alert("This activication code is wrong");
+   						document.getElementById("activication").value="";
+   					}
+   					else{
+   						$("#ps").removeAttr("disabled"); 
+   						 
+   					}
+   				}
+   			}
+   			var ac=document.getElementById("activication").value;
+   			var address="/checkac?ac="+ac;
+   			xmlhttp.open("GET",address,true);
+   			xmlhttp.send();	  
+      //]]>	
+ 		}	
+	</script>
+
+</body>
+</html>
