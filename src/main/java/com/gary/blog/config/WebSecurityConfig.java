@@ -8,8 +8,8 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
-import com.gary.myblog.dao.MyUserRepository;
-import com.gary.myblog.dao.MyUserService;
+import com.gary.blog.dao.MyUserRepository;
+import com.gary.blog.dao.MyUserService;
 
 @Configuration
 @EnableWebSecurity

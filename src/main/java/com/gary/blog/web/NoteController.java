@@ -24,12 +24,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.gary.blog.dao.CommentRepository;
+import com.gary.blog.dao.MyUserRepository;
+import com.gary.blog.dao.NoteRepository;
 import com.gary.blog.domain.Comment;
 import com.gary.blog.domain.MyUser;
 import com.gary.blog.domain.Note;
-import com.gary.myblog.dao.CommentRepository;
-import com.gary.myblog.dao.MyUserRepository;
-import com.gary.myblog.dao.NoteRepository;
 
 
 

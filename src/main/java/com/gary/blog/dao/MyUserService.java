@@ -1,4 +1,4 @@
-package com.gary.myblog.dao;
+package com.gary.blog.dao;
 
 import java.util.ArrayList;
 import java.util.List;

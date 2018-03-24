@@ -1,4 +1,4 @@
-package com.gary.myblog.dao;
+package com.gary.blog.dao;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 
